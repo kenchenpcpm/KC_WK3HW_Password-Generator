@@ -1,4 +1,5 @@
 // Assignment Code
+var specialCharacters = "!@#$%^&*()";
 var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
@@ -9,6 +10,49 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+function generatePassword() {
+  var passwordLength = prompt("Enter the number of characters as your passwork length:");
+  var numbers = confirm("Would you like to have numbers in your password?");
+  var lowercases = confirm("Would you like to have lowercases in your password?");
+  var uppercases = confirm("Would you like to have upeer in your password?");
+  var special = confirm("Would you like to have special characters in your password?");
+  
+  var minimumCount = 0;
+  var minimumNumbers = "";
+  var minimumLowercases = "";
+  var minimumUppercases = "";
+  var minimumSpecialcharaters = "";
+
+  var functionArray = {
+    getNumbers: function(){
+      return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
+    },
+    getLowercases: function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
+    },
+    getuppercases: function() {
+      return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
+    },
+    getSpecialcharacters: function() {
+      return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
+    }
+  };
+  
+  if (numbers === true) {
+    minimumNumbers = functionArray.getNumbers();
+    minimumCount++;
+  }
+  if (lowercases === true) {
+    minimumLowercases = functionArray.getLowercases();
+    minimumLowercases++;
+  }
+  if (uppercases === true) {
+    minimumUppercases = functionArray.getUppercases();
+    minimumUppercases++;
+  } 
+}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
