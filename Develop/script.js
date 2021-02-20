@@ -1,6 +1,7 @@
 // Assignment Code
 var specialCharacters = "!@#$%^&*()";
 var generateBtn = document.querySelector("#generate");
+generateBtn.addEventListener("click", writePassword);
 
 // Write password to the #password input
 function writePassword() {
@@ -51,6 +52,24 @@ function generatePassword() {
     minimumUppercases = functionArray.getUppercases();
     minimumUppercases++;
   } 
+  if (special === true) {
+    minimumSpecialcharaters = functionArray.getSpecialcharacters();
+    minimumSpecialcharaters++;
+  }
+
+  var randomPasswordgenerted = "";
+  for (let i=0; i<(parseInt(passwordLength) - minimumCount); i++) {
+    var randomnumberselected = Math.floor(Math.random() * 4);
+    randomPasswordgenerted += randomnumberselected;
+  }
+
+  randomPasswordgenerted += minimumNumbers;
+  randomPasswordgenerted += minimumLowercases;
+  randomPasswordgenerted += minimumUppercases;
+  randomPasswordgenerted += minimumSpecialcharaters;
+
+  return randomPasswordgenerted;
+
 }
 
 
