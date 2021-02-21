@@ -1,7 +1,7 @@
 // Assignment Code
 const specialCharacters = "!@#$%^&*()";
-const generateButton = document.getElementById('generateBtn')
-generateButton.addEventListener('click', writePassword)
+const generateButton = document.getElementById('generate');
+generateButton.addEventListener('click', writePassword);
 
 // Write password to the #password input
 function writePassword() {
