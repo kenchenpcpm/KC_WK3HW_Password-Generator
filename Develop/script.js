@@ -1,7 +1,7 @@
 // Assignment Code
-var specialCharacters = "!@#$%^&*()";
-var generateBtn = document.querySelector("#generate");
-generateBtn.addEventListener("click", writePassword);
+const specialCharacters = "!@#$%^&*()";
+const generateButton = document.getElementById('generateBtn')
+generateButton.addEventListener('click', writePassword)
 
 // Write password to the #password input
 function writePassword() {
@@ -26,52 +26,49 @@ function generatePassword() {
   var minimumSpecialcharaters = "";
 
   var functionArray = {
-    getNumbers: function(){
+    getnumbers: function(){
       return String.fromCharCode(Math.floor(Math.random() * 10 + 48));
     },
-    getLowercases: function() {
+    getlowercases: function() {
       return String.fromCharCode(Math.floor(Math.random() * 26 + 97));
     },
     getuppercases: function() {
       return String.fromCharCode(Math.floor(Math.random() * 26 + 65));
     },
-    getSpecialcharacters: function() {
+    getspecial: function() {
       return specialCharacters[Math.floor(Math.random() * specialCharacters.length)]
     }
   };
   
   if (numbers === true) {
-    minimumNumbers = functionArray.getNumbers();
+    minimumNumbers = functionArray.getnumbers();
     minimumCount++;
   }
   if (lowercases === true) {
-    minimumLowercases = functionArray.getLowercases();
-    minimumLowercases++;
+    minimumLowercases = functionArray.getlowercases();
+    minimumCount++;
   }
   if (uppercases === true) {
-    minimumUppercases = functionArray.getUppercases();
-    minimumUppercases++;
+    minimumUppercases = functionArray.getuppercases();
+    minimumCount++;
   } 
   if (special === true) {
-    minimumSpecialcharaters = functionArray.getSpecialcharacters();
-    minimumSpecialcharaters++;
+    minimumSpecialcharaters = functionArray.getspecial();
+    minimumCount++;
   }
 
-  var randomPasswordgenerted = "";
+  var randomPasswordgenerated = "";
   for (let i=0; i<(parseInt(passwordLength) - minimumCount); i++) {
     var randomnumberselected = Math.floor(Math.random() * 4);
-    randomPasswordgenerted += randomnumberselected;
+    randomPasswordgenerated += randomnumberselected;
   }
 
-  randomPasswordgenerted += minimumNumbers;
-  randomPasswordgenerted += minimumLowercases;
-  randomPasswordgenerted += minimumUppercases;
-  randomPasswordgenerted += minimumSpecialcharaters;
+  randomPasswordgenerated += minimumNumbers;
+  randomPasswordgenerated += minimumLowercases;
+  randomPasswordgenerated += minimumUppercases;
+  randomPasswordgenerated += minimumSpecialcharaters;
 
-  return randomPasswordgenerted;
+  return randomPasswordgenerated;
 
 }
 
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
